@@ -1,6 +1,7 @@
 let tg = window.Telegram.WebApp;
 
 tg.expand();
+
 tg.MainButton.text = "Send"; //изменяем текст кнопки
 // tg.MainButton.setText("Send1"); //изменяем текст кнопки иначе
 tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
