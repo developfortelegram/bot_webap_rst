@@ -16,7 +16,43 @@
                     <label class="form-label">Name</label>
                     <textarea name="textdesc" class="form-control" id="textDesc" rows="10" cols="40"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4" id="submitBtn">відправити</button>
+                <div class="form-group">
+                    <label class="form-label">Select an option</label>
+                    <div id="optionSelect">
+                        <!-- Вставляємо JavaScript-код для генерації варіантів на основі переданих параметрів -->
+                        <script>
+                            // Отримуємо значення параметра "options" з URL-адреси
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const optionsParam = urlParams.get('options');
+
+                            // Перетворюємо рядок параметра "options" у масив за допомогою роздільників
+                            const options = optionsParam ? optionsParam.split(',') : [];
+
+                            // Отримуємо значення параметра "param" з URL-адреси
+                            const myParam = urlParams.get('param');
+
+                            // Генеруємо варіанти вибору на основі переданих параметрів
+                            const optionSelect = document.querySelector('#optionSelect');
+                            options.forEach(option => {
+                                const checkbox = document.createElement('input');
+                                checkbox.type = 'checkbox';
+                                checkbox.name = 'option';
+                                checkbox.value = option;
+                                checkbox.checked = myParam === option;
+
+                                const label = document.createElement('label');
+                                label.appendChild(document.createTextNode(option));
+                                label.appendChild(checkbox);
+
+                                optionSelect.appendChild(label);
+                            });
+                        </script>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary mt-4" id="submitBtn">Send</button>
             </form>
         </div>
     </div>
