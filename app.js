@@ -34,7 +34,7 @@ submitBtn.addEventListener('click', function(){ //вешаем событие н
         checkboxes.forEach(checkbox => {
             // Отримуємо ім'я та значення чекбоксу
             const name = checkbox.name;
-            const value = checkbox.checked ? 'Заповнено' : 'Не заповнено';
+            const value = checkbox.checked ? '1' : '0';
 
             // Формуємо рядок з іменем та значенням чекбоксу
             const checkboxString = `${name}: ${value}`;
