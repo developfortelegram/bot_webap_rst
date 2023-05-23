@@ -13,8 +13,47 @@ tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются в�
 let submitBtn = document.getElementById("submitBtn");
 let text =  document.getElementById("textDesc");
 
+
+
+
+
+
+
 submitBtn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-    tg.sendData(text.value);
+    //
+    // Знаходимо елемент з ідентифікатором "optionSelect"
+        const optionSelect = document.getElementById('optionSelect');
+
+    // Знаходимо всі чекбокси всередині елементу "optionSelect"
+        const checkboxes = optionSelect.querySelectorAll('input[type="checkbox"]');
+
+    // Створюємо порожній масив для зберігання інформації про чекбокси
+        const checkboxValues = [];
+
+    // Проходимося по кожному чекбоксу
+        checkboxes.forEach(checkbox => {
+            // Отримуємо ім'я та значення чекбоксу
+            const name = checkbox.name;
+            const value = checkbox.checked ? 'Заповнено' : 'Не заповнено';
+
+            // Формуємо рядок з іменем та значенням чекбоксу
+            const checkboxString = `${name}: ${value}`;
+
+            // Додаємо рядок до масиву
+            checkboxValues.push(checkboxString);
+        });
+
+    // Об'єднуємо всі рядки в один рядок, розділені комами
+        const resultString = checkboxValues.join(', ');
+
+    // Виводимо результат у консоль
+        console.log(resultString);
+
+
+
+
+    //
+    tg.sendData(text.value+"!("+resultString+")!");
     tg.close();
 });
 
