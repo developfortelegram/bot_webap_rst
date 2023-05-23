@@ -25,8 +25,8 @@
                             const urlParams = new URLSearchParams(window.location.search);
                             const optionsParam = urlParams.get('options');
 
-                            // Перетворюємо рядок параметра "options" у масив за допомогою роздільників
-                            const options = optionsParam ? optionsParam.split(',') : [];
+                            // Парсимо рядок параметра "options" у масив за допомогою роздільника
+                            const options = optionsParam ? optionsParam.split(';') : [];
 
                             // Отримуємо значення параметра "param" з URL-адреси
                             const myParam = urlParams.get('param');
@@ -49,6 +49,7 @@
                         </script>
                     </div>
                 </div>
+
 
 
 
